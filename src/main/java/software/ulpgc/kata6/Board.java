@@ -24,10 +24,9 @@ public class Board {
     public Board next() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < rows(); i++) {
-            for (int j = 0; j <cols(); j++) {
+            for (int j = 0; j < cols(); j++)
                 sb.append(shouldBeAlive(cell(at(i,j))) ? Alive : Dead);
-                sb.append('\n');
-            }
+            sb.append('\n');
         }
         return new Board(sb.toString());
     }
@@ -47,7 +46,7 @@ public class Board {
                 return (int) offsets.stream()
                         .map(point::add)
                         .filter(this::isInBounds)
-                        .filter(p-> cell(p).isAlive())
+                        .filter(p -> cell(p).isAlive())
                         .count();
             }
 
@@ -56,9 +55,7 @@ public class Board {
             }
 
             @Override
-            public boolean isAlive() {
-                return states[point.i()].charAt(point.j()) == Alive;
-            }
+            public boolean isAlive() { return states[point.i()].charAt(point.j()) == Alive;}
         };
     }
 
